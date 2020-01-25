@@ -34,8 +34,8 @@ const carouselCreator = (arr) => {
   leftButton.classList.add('left-button');
   rightButton.classList.add('right-button');
 
-  leftButton.textContent = "<";
-  rightButton.textContent = ">"
+  leftButton.textContent = '<';
+  rightButton.textContent = '>';
 
   carousel.appendChild(leftButton);
   carousel.appendChild(rightButton);
@@ -44,7 +44,7 @@ const carouselCreator = (arr) => {
 
   const caroImg = document.createElement('img');
   caroImg.src = arr[i];
-  caroImg.style.display = 'block';
+  caroImg.style.display = 'flex';
 
   carousel.appendChild(caroImg);
 
@@ -55,21 +55,23 @@ const carouselCreator = (arr) => {
     } else {
       i = arr.length - 1;
       caroImg.src = arr[i];
-    };
+    }
   });
 
   rightButton.addEventListener('click', () => {
-    if (i < array.length - 1) {
+    if (i < arr.length - 1) {
       i += 1;
       caroImg.src = arr[i];
     } else {
       i = 0;
       caroImg.src = arr[i];
-    };
+    }
   });
 
+  console.log(carousel);
   return carousel;
 };
+
 
 const carouselContainer = document.querySelector('.carousel-container');
 carouselContainer.appendChild(carouselCreator(images));
